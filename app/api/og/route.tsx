@@ -3,7 +3,7 @@ import { NextRequest } from 'next/server';
 
 export const runtime = 'edge';
 
-export default async function handler(req: NextRequest) {
+export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
 
@@ -107,7 +107,6 @@ export default async function handler(req: NextRequest) {
       }
     );
   } catch (e: any) {
-    console.log(`${e.message}`);
     return new Response(`Failed to generate the image`, {
       status: 500,
     });
